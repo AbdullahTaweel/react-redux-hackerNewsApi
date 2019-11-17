@@ -3,7 +3,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 [This Excercise is an imitation of this Tut](https://www.robinwieruch.de/react-redux-tutorial#redux-lift-connection )
 
-[Greets to Mr.Roben Wieruch](@https://github.com/rwieruch)
+[Greets to Mr.Roben Wieruch](@https://github.com/rwieruch "GitHub")
  
 
 ## Available Scripts
