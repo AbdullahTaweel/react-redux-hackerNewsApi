@@ -1,16 +1,22 @@
 import React from 'react';
-import './Story.css';
 import { connect } from 'react-redux';
 import { doArchiveStory } from '../actions/archive';
+import { ButtonInline } from './Button';
+import './Story.css';
 
-
-const Story = ({ story, columns, onArchive}) => {
+const Story = ({ story, columns, onArchive }) => {
   const {
-    title, url, author, num_comments, points, objectID
+    title,
+    url,
+    author,
+    num_comments,
+    points,
+    objectID,
   } = story;
+
   return (
-    <div className="Story">
-           <span style={{ width: columns.title.width }}>
+    <div className="story">
+      <span style={{ width: columns.title.width }}>
         <a href={url}>{title}</a>
       </span>
       <span style={{ width: columns.author.width }}>
@@ -23,21 +29,19 @@ const Story = ({ story, columns, onArchive}) => {
         {points}
       </span>
       <span style={{ width: columns.archive.width }}>
-      <button type='button' className='button-inline' onClick={()=> onArchive(objectID)}>
-        Archive
-      </button>
+        <ButtonInline onClick={() => onArchive(objectID)}>
+          Archive
+        </ButtonInline>
       </span>
     </div>
   );
 }
-
-
 
 const mapDispatchToProps = dispatch => ({
   onArchive: id => dispatch(doArchiveStory(id)),
 });
 
 export default connect(
-  
+  null,
   mapDispatchToProps
 )(Story);

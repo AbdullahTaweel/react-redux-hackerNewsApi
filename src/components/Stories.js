@@ -1,9 +1,12 @@
 import React from 'react';
-import './Stories.css';
-import Story from './Story';
 import { connect } from 'react-redux';
-import { getReadableStories } from '../selectors/story';
+import {
+  getReadableStories,
+  getFetchError,
+} from '../selectors/story';
+import './Stories.css';
 
+import Story from './Story';
 
 const COLUMNS = {
   title: {
@@ -27,35 +30,37 @@ const COLUMNS = {
   },
 };
 
-const Stories = ({ stories, onArchive}) => 
-<div className="stories">
+const Stories = ({ stories, error }) =>
+  <div className="stories">
+    <StoriesHeader columns={COLUMNS} />
 
-<div className="stories-header">
-      {Object.keys(COLUMNS).map(key =>
-        <span
-          key={key}
-          style={{ width: COLUMNS[key].width }}
-        >
-          {COLUMNS[key].label}
-        </span>
-      )}
-    </div> 
+    { error && <p className="error">Something went wrong ...</p> }
 
-  {(stories || []).map(story =>
-    <Story
-    key={story.objectID}
-    story={story}
-    columns={COLUMNS}
-    //onArchive={onArchive}
-    />
+    {(stories || []).map(story =>
+      <Story
+        key={story.objectID}
+        story={story}
+        columns={COLUMNS}
+      />
     )}
-</div>
+  </div>
 
+const StoriesHeader = ({ columns }) =>
+  <div className="stories-header">
+    {Object.keys(columns).map(key =>
+      <span
+        key={key}
+        style={{ width: columns[key].width }}
+      >
+        {columns[key].label}
+      </span>
+    )}
+  </div>
 
 const mapStateToProps = state => ({
   stories: getReadableStories(state),
+  error: getFetchError(state),
 });
-
 
 export default connect(
   mapStateToProps
