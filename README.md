@@ -1,6 +1,11 @@
 ![image](https://user-images.githubusercontent.com/42914952/69005715-a9cab080-092e-11ea-9e8e-8819d973dcc1.png)
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+[This Excercise is an imitation of this Tut](https://www.robinwieruch.de/react-redux-tutorial#redux-lift-connection )
+
+[Greets to Mr.Roben Wieruch](@https://github.com/rwieruch)
+ 
+
 ## Available Scripts
 
 In the project directory, you can run:
